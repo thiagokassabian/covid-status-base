@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Números da Covid</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/keen-dashboards.css" />
+</head>
+
+<body class="keen-dashboard">
+	<div class="container">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar-collapse">
+				<ul class="navbar-nav nav main-nav">
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../country.html">País</a></li>
+					<li><a href="#">Top 5</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container grid grid-hero-sidebar">
+		<div class="sidebar">
+			<div class="chart-wrapper">
+				<div class="chart-title">Filtro</div>
+				<div class="chart-stage">
+					<div>
+						<form>
+							<div>
+								<label for="date_start">Data início</label><br>
+								<input type="date" name="date_start" id="date_start" min="2020-01-01" />
+							</div>
+							<div>
+								<label for="date_end">Data fim</label><br>
+								<input type="date" name="date_end" id="date_end" min="2020-01-01" />
+							</div>
+							<div>
+								<label for="cmbCountry">País</label><br>
+								<select class="custom-select" id="cmbCountry"></select>
+							</div>
+							<div>
+								<label for="cmbData">Dados</label><br>
+								<select class="custom-select" id="cmbData">
+									<option value="Confirmed">Casos Confirmados</option>
+									<option value="Deaths" selected>Número de Óbitos</option>
+									<option value="Recovered">Recuperados</option>
+								</select>
+							</div>
+							<div class="btn">
+								<button type="submit" id="filtro">
+									Aplicar
+								</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hero">
+			<div class="chart-wrapper">
+				<div class="chart-stage">
+					<div>
+						<canvas id="linhas" width="300" height="100"></canvas>
+					</div>
+				</div>
+			</div>
+			<!-- <button id="destroy">destroy</button>
+			<button id="render">render</button> -->
+		</div>
+		<div class="chart-wrapper">
+			<div class="chart-title">Total de confirmados</div>
+			<div class="chart-stage">
+				<section class="itemkpi">
+					<h5 id="kpiconfirmed"></h5>
+				</section>
+			</div>
+		</div>
+		<div class="chart-wrapper">
+			<div class="chart-title">Total de mortes</div>
+			<div class="chart-stage">
+				<section class="itemkpi">
+					<h5 id="kpideaths"></h5>
+				</section>
+			</div>
+		</div>
+		<div class="chart-wrapper">
+			<div class="chart-title">Total de Recuperados</div>
+			<div class="chart-stage">
+				<section class="itemkpi">
+					<h5 id="kpirecovered"></h5>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<!-- Project Analytics -->
+	<script type="module" src="./assets/js/country.js"></script>
+
+</body>
+
+</html>
